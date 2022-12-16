@@ -14,7 +14,7 @@ spec:
     targetRevision: HEAD  # Always the Last Commit in this git repository
     path: dev
   destination: 
-    server: http://kubernetes.default.svc # internal minikube kubernetese cluster > kubectlg et svc
+    server: https://kubernetes.default.svc # internal minikube kubernetese cluster > kubectlg et svc
     namespace: jadevlab   # All the configurations defined in deployment.yaml and service.yaml should be created in <jadevlab> namespace
 
   syncPolicy:
