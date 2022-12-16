@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapp-argo-application
+  namespace: argocd
+
+spec:
+  # The project the application belongs to.
+  project: default
+
+  # Source of the application manifests
+  source:
+    repoURL: https://github.com/jahidul-arafat/argocd-app-config.git
+    targetRevision: HEAD  # Always the Last Commit in this git repository
+    path: dev
+  destination: 
+    server: http://kubernetes.default.svc # internal minikube kubernetese cluster > kubectlg et svc
+    namespace: jadevlab   # All the configurations defined in deployment.yaml and service.yaml should be created in <jadevlab> namespace
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true  # undo or override any manual change to the cluster
+      prune: true     
