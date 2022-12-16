@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp-deployment
+  name: jadevlab-deployment
 spec:
   selector:
     matchLabels:
-      app: myapp
+      app: jadevlab-app
   replicas: 4
   template:
     metadata:
       labels:
-        app: myapp
+        app: jadevlab-app
     spec:
       containers:
-      - name: myapp
+      - name: jadevlab-container
         image: nanajanashia/argocd-app:1.1
         ports:
         - containerPort: 8080
